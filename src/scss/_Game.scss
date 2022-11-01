@@ -1,0 +1,48 @@
+.progress {
+  height: 10px;
+  border-radius: 15px;
+  background-color: rgb(232, 232, 232);
+  margin-bottom: 25px;
+
+  &__inner {
+    height: 100%;
+    border-radius: 30px;
+    width: 80%;
+    background: rgb(18, 231, 48);
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(90deg, rgba(18, 231, 48, 1) 0%, rgb(141, 20, 240) 100%);
+  }
+}
+
+h1 {
+  margin-bottom: 25px;
+
+  font-size: 36px;
+  font-weight: 400;
+
+  @media screen and (max-width: 650px) {
+    font-size: 26px;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      border: 2px solid rgba(0, 0, 0, 0.3);
+    }
+  }
+}

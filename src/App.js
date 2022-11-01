@@ -1,24 +1,170 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Game from './components/Game';
+import Result from './components/Result';
+import './index.scss'
+
+export const questions = [
+  {
+    title: 'Как называется столица Австралии?',
+    variants: ['Сидней', 'Лиссабон', 'Канберра', 'Не знаю'],
+    correct: 2,
+  },
+  {
+    title: 'Какое историческое событие произошло 7 сентября 1812 года?',
+    variants: ['Куликовская битва', 'Бородинское сражение', 'Битва под Аустерлицем', 'Не знаю'],
+    correct: 1,
+  },
+  {
+    title: 'Какова температура замерзания воды?',
+    variants: [
+      '-10 градусов по °C',
+      '+1 градус по °C',
+      '0 градусов по °C',
+      'Не знаю'
+    ],
+    correct: 2,
+  },
+  {
+    title: 'По какой шкале измеряют мощность землетрясений?',
+    variants: [
+      'По шкале Кельвина',
+      'По шкале Рихтера',
+      'По шкале Фаренгейта',
+      'Не знаю'
+    ],
+    correct: 1,
+  },
+  {
+    title: 'Чем известен Чарльз Дарвин?',
+    variants: [
+      'Изобретением телефона',
+      'Изобретением радио',
+      'Теорией эволюции',
+      'Не знаю'
+    ],
+    correct: 2,
+  },
+  {
+    title: 'Какое слово из перечисленных является словом исключением?',
+    variants: [
+      'Деревянный',
+      'Размеренный',
+      'Свойственный',
+      'Не знаю'
+    ],
+    correct: 0,
+  },
+  {
+    title: 'Скольки метрам равна 1 миля (в английской системе мер)?',
+    variants: [
+      '2000 М',
+      '1609 М',
+      '500 М',
+      'Не знаю'
+    ],
+    correct: 1,
+  },
+  {
+    title: 'Как называется процесс поглощения углекислого газа и выделения кислорода растениями на свету?',
+    variants: [
+      'Ботулизм',
+      'Регенерация',
+      'Фотосинтез',
+      'Не знаю'
+    ],
+    correct: 2,
+  },
+  {
+    title: 'Укажите единицу измерения атмосферного давления',
+    variants: [
+      'Ампер',
+      'Паскаль',
+      'Ньютон',
+      'Не знаю'
+    ],
+    correct: 1,
+  },
+  {
+    title: 'Какая планета ближе всех к солнцу?',
+    variants: [
+      'Меркурий',
+      'Венера',
+      'Земля',
+      'Не знаю'
+    ],
+    correct: 0,
+  },
+  {
+    title: 'Сколько пар хромосом включает геном человека?',
+    variants: [
+      '14 пар',
+      '22 пары',
+      '23 пары',
+      'Не знаю'
+    ],
+    correct: 2,
+  },
+  {
+    title: 'Что выражает литературный приём метафора?',
+    variants: [
+      'Дарит слову, к которому относится, особую эмоциональную окраску',
+      'Переносит свойства с одного предмета на другой',
+      'Наделяет предметы чертами живых существ',
+      'Не знаю'
+    ],
+    correct: 1,
+  },
+  {
+    title: 'Как называется стиль живописи, который позволяет художнику выразить своё субъективное восприятие действительности?',
+    variants: [
+      'Экспрессионизм',
+      'Импрессионизм',
+      'Авангардизм',
+      'Не знаю'
+    ],
+    correct: 0,
+  },
+  {
+    title: 'Самая высокая точка Евразии это...',
+    variants: [
+      'Эльбрус',
+      'Килиманджаро',
+      'Эверест',
+      'Не знаю'
+    ],
+    correct: 2,
+  },
+  {
+    title: 'Кто автор строк: «Отговорила роща золотая березовым, веселым языком, и журавли, печально пролетая, уж не жалеют больше ни о ком.»?',
+    variants: [
+      'Сергей Есенин',
+      'Александр Блок',
+      'Александр Пушкин',
+      'Не знаю'
+    ],
+    correct: 0,
+  },
+];
 
 function App() {
+  const [step, setStep] = React.useState(0);
+  const [correct, setCorrect] = React.useState(0);
+  const question = questions[step];
+
+  const onClickVariant = (index) => {
+    setStep(step + 1);
+
+    if(index === question.correct){
+      setCorrect(correct + 1);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='App'>
+        {
+          step !== questions.length ? (<Game step={step} question={question} onClickVariant={onClickVariant} />) : <Result correct={correct}/>
+        }
+      </div>
   );
 }
 
