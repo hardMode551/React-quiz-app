@@ -1,9 +1,20 @@
 import React from 'react';
-import { questions } from '../App';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCorrect, setStep } from '../Redux/slices/questionsSlice';
 import '../scss/_Game.scss';
 
-const Game = ({ step, question, onClickVariant }) => {
-  const percentage = Math.round((step / questions.length) * 100);
+const Game = ({ question, totalLength }) => {
+  const { step, correct } = useSelector((state) => state.questions);
+
+  const percentage = Math.round((step / totalLength) * 100);
+  const dispatch = useDispatch();
+
+  const onClickVariant = (index) => {
+    dispatch(setStep(step + 1));
+    if (index === question.correct) {
+      dispatch(setCorrect(correct + 1));
+    }
+  };
 
   return (
     <>
