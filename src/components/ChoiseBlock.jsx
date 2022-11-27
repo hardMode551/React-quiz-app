@@ -1,5 +1,7 @@
+import { useMutation, useQuery } from '@apollo/client';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { INITIAL_STATE, UPDATE_STEP } from '../apollo/quizes';
 
 import '../scss/_ChoiseBlock.scss';
 

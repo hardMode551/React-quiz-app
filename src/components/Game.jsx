@@ -1,3 +1,4 @@
+import { useMutation, useQuery } from '@apollo/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCorrect, setStep } from '../Redux/slices/questionsSlice';

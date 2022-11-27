@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { schoolQuestions } from '../../App';
 
 const initialState = {
   step: 0,
